@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Order Estimate — Ember &amp; Iron</title>
+<meta name="description" content="Get an instant rough estimate for a custom forged piece — price and lead time, based on item type, material, and engraving.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ember <span>&amp;</span> Iron</a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="custom-order.html" aria-current="page">Custom Orders</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:4rem 0 3rem;">
+  <div class="wrap">
+    <h1>Custom Order <span class="ember-text">Estimate</span></h1>
+    <p>A rough, instant estimate — not a quote. Every piece gets a real quote after we talk through the details, but this'll get you in the right ballpark before you reach out.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section" style="border-top:none;">
+  <div class="wrap">
+    <div class="calc">
+      <div class="calc-form">
+        <label for="item-type">Item Type</label>
+        <select id="item-type">
+          <option value="hook" data-base="45" data-weeks="1">Wall Hooks (set of 4)</option>
+          <option value="fireplace" data-base="180" data-weeks="2">Fireplace Tool Set</option>
+          <option value="gate" data-base="420" data-weeks="4">Garden Gate Hardware</option>
+          <option value="railing" data-base="1200" data-weeks="6">Stair Railing (per 10 ft)</option>
+          <option value="knife" data-base="320" data-weeks="3">Custom Knife</option>
+        </select>
+
+        <label for="material">Material</label>
+        <select id="material">
+          <option value="mild" data-mult="1">Mild Steel</option>
+          <option value="stainless" data-mult="1.6">Stainless Steel</option>
+          <option value="damascus" data-mult="2.4">Damascus Steel</option>
+        </select>
+
+        <label for="engraving">Engraving / Finish Detail</label>
+        <select id="engraving">
+          <option value="none" data-fee="0">None</option>
+          <option value="simple" data-fee="35">Simple (initials, date)</option>
+          <option value="detailed" data-fee="120">Detailed (custom pattern)</option>
+        </select>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" value="1" min="1" max="20">
+      </div>
+
+      <div class="calc-result">
+        <h3 style="margin-top:0;">Estimate</h3>
+        <div class="calc-result__row"><span>Base price</span><span id="r-base">$0</span></div>
+        <div class="calc-result__row"><span>Material adjustment</span><span id="r-material">×1.0</span></div>
+        <div class="calc-result__row"><span>Engraving</span><span id="r-engraving">$0</span></div>
+        <div class="calc-result__row"><span>Quantity</span><span id="r-qty">1</span></div>
+        <div class="calc-result__total">
+          <span>Estimated total</span>
+          <span class="amount" id="r-total">$0</span>
+        </div>
+        <p style="color:var(--muted); margin-top:1rem;">Estimated lead time: <strong id="r-weeks" style="color:var(--text);">—</strong></p>
+        <p class="calc-disclaimer">This is a rough, automatic estimate for planning purposes — not a binding quote. Final pricing depends on the actual design, dimensions, and material availability. <a href="contact.html">Reach out</a> with this estimate to start a real one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Ember &amp; Iron</span>
+    <span><a href="contact.html">hello@emberandiron.example</a> · (555) 555-0133</span>
+  </div>
+</footer>
+
+<script src="js/quote-calculator.js"></script>
+</body>
+</html>

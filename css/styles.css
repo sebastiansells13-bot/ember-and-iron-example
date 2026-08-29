@@ -1,0 +1,392 @@
+/* Ember & Iron — hand-authored CSS, no build step, no framework.
+   Deliberately un-templated: this site is plain static HTML/CSS/JS, not an
+   Eleventy build like the other examples, to demonstrate the opposite end
+   of the "how much tooling does a client site actually need" spectrum. */
+
+:root {
+  --bg: #171310;
+  --bg-raised: #221c17;
+  --text: #f2ece4;
+  --muted: #a89a8c;
+  --ember-1: #ff6a00;
+  --ember-2: #ffb703;
+  --border: #3a2f27;
+  --max: 68rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+}
+
+a {
+  color: var(--ember-2);
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.ember-text {
+  background: linear-gradient(90deg, var(--ember-1), var(--ember-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(23, 19, 16, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--border);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.25rem;
+}
+
+.brand {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand span {
+  color: var(--ember-2);
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.35rem;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--ember-1);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: 6rem 0 5rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 140%;
+  background:
+    radial-gradient(38rem 24rem at 20% 20%, rgba(255, 106, 0, 0.22), transparent 60%),
+    radial-gradient(30rem 20rem at 85% 60%, rgba(255, 183, 3, 0.14), transparent 60%);
+  z-index: 0;
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.15rem;
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--ember-1), var(--ember-2));
+  color: #1a1210;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.8rem 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  border: 2px solid var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--ember-1);
+}
+
+.divider {
+  height: 3px;
+  background: linear-gradient(90deg, var(--ember-1), var(--ember-2));
+  border: none;
+  margin: 0;
+}
+
+/* Section */
+.section {
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-heading p {
+  color: var(--muted);
+  max-width: 34rem;
+  margin: 0.5rem auto 0;
+}
+
+/* Work grid (CSS-illustrated pieces, no photography) */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
+}
+
+.piece-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+}
+
+.piece-card__art {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(255, 106, 0, 0.28), transparent 70%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0 2px, transparent 2px 14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.piece-card__art svg {
+  width: 55%;
+  height: 55%;
+  stroke: var(--ember-2);
+  fill: none;
+  stroke-width: 1.4;
+}
+
+.piece-card__body {
+  padding: 1.5rem;
+}
+
+.piece-card__body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.piece-card__body p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* Quote calculator */
+.calc {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 48rem) {
+  .calc {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-form {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.calc-form label {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: 1.25rem 0 0.4rem;
+}
+
+.calc-form label:first-child {
+  margin-top: 0;
+}
+
+.calc-form select,
+.calc-form input[type="number"] {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.calc-result {
+  position: sticky;
+  top: 6rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.calc-result__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.calc-result__row:last-of-type {
+  border-bottom: none;
+}
+
+.calc-result__total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ember-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.calc-result__total .amount {
+  font-family: "Oswald", sans-serif;
+  font-size: 2.25rem;
+  color: var(--ember-2);
+}
+
+.calc-disclaimer {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 1.5rem;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 2px solid var(--border);
+  padding: 2.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-footer a {
+  color: var(--muted);
+}
+
+.site-footer a:hover {
+  color: var(--ember-2);
+}
+
+/* Generic content */
+.prose {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.prose p {
+  color: var(--muted);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.contact-grid h3 {
+  font-size: 1rem;
+  color: var(--ember-2);
+}
+
+.contact-grid p {
+  color: var(--muted);
+  margin: 0;
+}

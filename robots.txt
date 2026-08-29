@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sebastiansells13-bot.github.io/ember-and-iron-example/sitemap.xml
