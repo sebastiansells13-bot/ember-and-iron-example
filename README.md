@@ -20,6 +20,11 @@ works correctly under a GitHub Pages project subpath with no `pathPrefix` config
 needed anywhere — a real, useful contrast with the Eleventy sites, which all needed
 that fix.
 
+The one exception is `404.html`. GitHub Pages serves it at whatever URL was
+missing (e.g. `/ember-and-iron-example/a/b`), where relative links would resolve
+under `/a/`, so it sets `<base href="/ember-and-iron-example/">`. Change that to
+`/` on a custom domain.
+
 The GitHub Actions workflow (`.github/workflows/deploy.yml`) reflects this too — it's
 five lines shorter than the Eleventy ones because there's nothing to build; it just
 uploads the repo as-is.
